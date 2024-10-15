@@ -1,0 +1,14 @@
+{
+  "name": "xlsx_2_csv_converter",
+  "version": "1.0.0",
+  "description": "simple converter from xlsx to csv",
+  "main": "index.js",
+  "dependencies": {
+    "node-xlsx": "0.24.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Khnychkin Kirill",
+  "license": "MIT"
+}
