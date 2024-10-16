@@ -6,6 +6,7 @@ const inputFolder = path.join(__dirname, '/input/');
 const outputFolder = path.join(__dirname, '/output/');
 
 let csvString = '';
+let filename = '';
 
 fs.readdir(inputFolder, (err, files) => {
   if (err) throw err;
@@ -16,7 +17,8 @@ fs.readdir(inputFolder, (err, files) => {
   });
 
   xlsxFiles.forEach((file) => {
-    const parsedXlsx = xlsx.parse(inputFolder + `/${file}`);
+    filename = file.split('.').slice(0, -1).join('.');
+    const parsedXlsx = xlsx.parse(inputFolder + `/${file}`, { defval: '' });
 
     // convert only the first sheet of the xlsx file since right now I need only the first sheet
     const sheet1 = parsedXlsx[0];
@@ -40,9 +42,9 @@ fs.readdir(inputFolder, (err, files) => {
     });
   });
 
-  fs.writeFile(outputFolder + '/output.csv', csvString, (err) => {
+  fs.writeFile(outputFolder + `/${filename}.csv`, csvString, (err) => {
     if (err) throw err;
 
-    console.log('CSV file created');
+    console.log(`Created: ${filename}.csv`);
   });
 });
