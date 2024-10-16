@@ -19,5 +19,3 @@ Small script for converting xslx files to csv files.
 .gitignore files in the `\input` and the `\output` folders are for git to track these directories so that they could be uploaded to the github. 
 
 Parser converts only first sheet of the xlsx file.
-
-Empty cells will be excluded from the resulting csv file.
